@@ -35,7 +35,7 @@ void setArr(struct abstactArray *a)
 void main()
 {
     struct abstactArray marks;
-    createArr(&marks, 10, 2);
+    createArr(&marks, 10, 5);
     setArr(&marks);
     printArr(&marks);
 
