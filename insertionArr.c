@@ -19,15 +19,15 @@ void displayArr(int arr[], int usedSize)
     printf("]\n");
 }
 
-// // shifting all thye elements in the last
-// void insertEle(int arr[], int usedSize, int capacity, int index, int ele)
-// {
-//     for (int i = usedSize - 1; i >= index; i--)
-//     {
-//         arr[i + 1] = arr[i];
-//     }
-//     arr[index] = ele;
-// }
+// shifting all thye elements in the last
+void insertEle(int arr[], int usedSize, int capacity, int index, int ele)
+{
+    for (int i = usedSize - 1; i >= index; i--)
+    {
+        arr[i + 1] = arr[i];
+    }
+    arr[index] = ele;
+}
 
 void insertElement(int arr[], int usedSize, int capacity, int index, int ele)
 {
