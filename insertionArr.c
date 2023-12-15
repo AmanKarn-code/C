@@ -31,16 +31,8 @@ void displayArr(int arr[], int usedSize)
 
 void insertElement(int arr[], int usedSize, int capacity, int index, int ele)
 {
-    int a;
-    // usedSize+=1;
     arr[usedSize] = arr[index];
     arr[index] = ele;
-    printf("%d", arr[usedSize]);
-    // for(int i=usedSize;i>index;i--){
-    //     a=arr[index];
-    //     arr[index]=ele;
-    //     arr[usedSize+1]=a;
-    // }
 }
 int main()
 {
@@ -54,9 +46,6 @@ int main()
     {
         printf("ERROR: the size ofthe usedSize can not be greater than capacity of the array.");
         return -1;
-    }
-    for(int i=0;i<capacity;i++){
-        arr[i]=0;
     }
     createArr(arr, usedSize);
     displayArr(arr, usedSize);
