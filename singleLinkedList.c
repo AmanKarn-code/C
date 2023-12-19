@@ -5,9 +5,9 @@ struct l {
     int i;
     struct l *next;
 };
-struct l *h ,*p ,*p1;
 
 void main(){
+struct l *h ,*p ,*p1;
     int c=0;
     h=NULL;
     while (c<5)
@@ -20,11 +20,11 @@ void main(){
             p->next=NULL;
         }
         else{
-            p1=(struct l*)malloc(sizeof(struct l));
+            p1=(struct l *)malloc(sizeof(struct l));
             printf("enter the no :- ");
             scanf("%d",&p1->i);
             p1 ->next=NULL;
-            p = p1;
+            p->next= p1;
         }
         c+=1;
     }
