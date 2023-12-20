@@ -6,8 +6,10 @@ struct l {
     struct l *next;
 };
 
+struct l *h ;
+struct l *p ;
+struct l *p1;
 void main(){
-struct l *h ,*p ,*p1;
     int c=0;
     h=NULL;
     while (c<5)
@@ -24,7 +26,8 @@ struct l *h ,*p ,*p1;
             printf("enter the no :- ");
             scanf("%d",&p1->i);
             p1 ->next=NULL;
-            p->next= p1;
+            p->next = p1; 
+            p = p1;
         }
         c+=1;
     }
