@@ -11,8 +11,8 @@ void insertAtBeg()
 {
     p = (struct s *)malloc(sizeof(struct s));
     printf("enter the no: ");
-    scanf("%d", p->i);
-    if (h == NULL)
+    scanf("%d", &p->i);
+    if (h->next == NULL)
     {
         h = p;
         p->next = NULL;
@@ -22,16 +22,22 @@ void insertAtBeg()
         p->next = h;
         h = p;
     }
-    // printing the nodes
-     p=h;
-    while(h!=NULL){
-        printf("%d ",p->i);
-        p=p->next;
-    }
 }
-int main(){
+void insertAtEnd(){
+    p = (struct s *)malloc(sizeof(struct s));
+    printf("enter the no: ");
+    scanf("%d", &p->i);
+    while(h->next!=NULL){
+        h=h->next;
+    }
+    h->next=p;
+    p->next=NULL;
+
+}
+int main()
+{
 
     h = NULL;
     insertAtBeg();
-   return 0;
+    return 0;
 }
