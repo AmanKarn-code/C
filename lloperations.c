@@ -109,7 +109,7 @@ void insertAfter()
     {
         p->next = p1->next;
         p1->next = p;
-    printf("%d has been inserted after %d.\n", p->i, n);
+        printf("%d has been inserted after %d.\n", p->i, n);
     }
 }
 
@@ -204,7 +204,6 @@ void deleteBefore()
 {
     int n;
     struct s *q, *r;
-    p = malloc(sizeof(struct s));
     p1 = malloc(sizeof(struct s));
     q = malloc(sizeof(struct s));
     r = malloc(sizeof(struct s));
@@ -265,12 +264,12 @@ int main()
     do
     {
         printf("Select the operation u want to perform.\n");
-        printf("--------------------------------------------------------------------------------------------------\n");
-        printf("|    1.Create the node \t        2.Insert a node at begining\t   3.Insert the node at end.\n");
-        printf("|    4.Insert after the value \t5.Insert before the value\t   6.Delete the node from start.\n");
-        printf("|    7.Delete from end \t        8.Delete before the value\t   9.Delete after the value.\n");
-        printf("|    10.View the LinkedList \n");
-        printf("----------------------------------------------------------------------------------------------------\n");
+        printf("-------------------------------------------------------------------------------------------------------------\n");
+        printf("||    1.Create the node \t        2.Insert a node at begining\t   3.Insert the node at end.       ||\n");
+        printf("||    4.Insert after the value \t        5.Insert before the value\t   6.Delete the node from start.   ||\n");
+        printf("||    7.Delete from end \t        8.Delete before the value\t   9.Delete after the value.       ||\n");
+        printf("||   10.View the LinkedList                                                                                ||\n ");
+        printf("------------------------------------------------------------------------------------------------------------\n");
         scanf("%d", &choice);
         switch (choice)
         {
