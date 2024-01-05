@@ -16,9 +16,9 @@ void createNode()
     scanf("%d", &n);
     while (start < n)
     {
-        p = malloc(sizeof(struct s));
         if (h == NULL)
         {
+            p = malloc(sizeof(struct s));
             printf("Enter the value %d :- ", start + 1);
             scanf("%d", &p->i);
             h = p;
@@ -79,7 +79,7 @@ void insertAtEnd()
         p1->next = p;
         p->next = NULL;
     }
-    printf("%d has been inserted at the begenning.\n", p->i);
+    printf("%d has been inserted at the end.\n", p->i);
 }
 
 // insering after the value
@@ -123,7 +123,7 @@ void insertBefore()
     q = malloc(sizeof(struct s));
     printf("enter the data u want to insert :- ");
     scanf("%d", &p->i);
-    printf("Provide the value after which u want to add :- ");
+    printf("Provide the value before which u want to add :- ");
     scanf("%d", &n);
     p1 = h;
     while (p1 != NULL)
@@ -164,8 +164,75 @@ void deletefromStart()
     {
         p = h;
         h = h->next;
+        printf("%d has been deleted from the start.\n", p->i);
         free(p);
-        printf("The data has been deleted from the starting.\n");
+    }
+}
+
+// deleting from end
+void deletefromEnd()
+{
+    p = malloc(sizeof(struct s));
+    if (h == NULL)
+    {
+        printf("No data found that is to be deleted.\n");
+    }
+    else if (h->next == NULL)
+    {
+        p = h;
+        h = h->next;
+        free(p);
+    }
+    else
+    {
+        p = h;
+        struct s *q;
+        q = malloc(sizeof(struct s));
+        while (p->next != NULL)
+        {
+            q = p;
+            p = p->next;
+        }
+        q->next = NULL;
+    printf("%d has been deleted from the end.\n", p->i);
+        free(p);
+    }
+}
+
+// deleting before the given value
+void deleteBefore()
+{
+    int n;
+    struct s *q,*r;
+    p = malloc(sizeof(struct s));
+    p1 = malloc(sizeof(struct s));
+    q = malloc(sizeof(struct s));
+    r = malloc(sizeof(struct s));
+
+    printf("Provide the value before which u want to delete :- ");
+    scanf("%d", &n);
+    p1=h;
+    while(p1!=NULL){
+        if(p1->i==n){
+            break;
+        }
+        r=q;
+        q=p1;
+        p1=p1->next;
+    }
+    if(p==NULL){
+        printf("NO such data found that is to be deleted.\n");
+    }
+    else if(p1==h){
+        printf("there is no value before %d. Hence it is the first value.\n",p1->i);
+    }
+    else{
+        r->next=p1;
+        if (q == h) {
+            h = p1;
+        }
+        printf("%d has been deleted before %d. \n",q->i,p1->i);
+        free(q);
     }
 }
 
@@ -218,6 +285,12 @@ int main()
             break;
         case 6:
             deletefromStart();
+            break;
+        case 7:
+            deletefromEnd();
+            break;
+        case 8:
+            deleteBefore();
             break;
         case 10:
             printList();
