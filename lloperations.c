@@ -109,8 +109,8 @@ void insertAfter()
     {
         p->next = p1->next;
         p1->next = p;
-    }
     printf("%d has been inserted after %d.\n", p->i, n);
+    }
 }
 
 // insering before the value
@@ -148,8 +148,8 @@ void insertBefore()
     {
         q->next = p;
         p->next = p1;
+        printf("%d has been inserted before %d.\n", p->i, n);
     }
-    printf("%d has been inserted before %d.\n", p->i, n);
 }
 
 // deleting the node from the starting
@@ -194,7 +194,7 @@ void deletefromEnd()
             p = p->next;
         }
         q->next = NULL;
-    printf("%d has been deleted from the end.\n", p->i);
+        printf("%d has been deleted from the end.\n", p->i);
         free(p);
     }
 }
@@ -203,7 +203,7 @@ void deletefromEnd()
 void deleteBefore()
 {
     int n;
-    struct s *q,*r;
+    struct s *q, *r;
     p = malloc(sizeof(struct s));
     p1 = malloc(sizeof(struct s));
     q = malloc(sizeof(struct s));
@@ -211,27 +211,33 @@ void deleteBefore()
 
     printf("Provide the value before which u want to delete :- ");
     scanf("%d", &n);
-    p1=h;
-    while(p1!=NULL){
-        if(p1->i==n){
+    p1 = h;
+    while (p1 != NULL)
+    {
+        if (p1->i == n)
+        {
             break;
         }
-        r=q;
-        q=p1;
-        p1=p1->next;
+        r = q;
+        q = p1;
+        p1 = p1->next;
     }
-    if(p==NULL){
+    if (p == NULL)
+    {
         printf("NO such data found that is to be deleted.\n");
     }
-    else if(p1==h){
-        printf("there is no value before %d. Hence it is the first value.\n",p1->i);
+    else if (p1 == h)
+    {
+        printf("there is no value before %d. Hence it is the first value.\n", p1->i);
     }
-    else{
-        r->next=p1;
-        if (q == h) {
+    else
+    {
+        r->next = p1;
+        if (q == h)
+        {
             h = p1;
         }
-        printf("%d has been deleted before %d. \n",q->i,p1->i);
+        printf("%d has been deleted before %d. \n", q->i, p1->i);
         free(q);
     }
 }
