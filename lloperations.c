@@ -241,6 +241,43 @@ void deleteBefore()
     }
 }
 
+// deleting after the value
+void delAfter()
+{
+    int t;
+    struct s *q, *r;
+    p = malloc(sizeof(struct s));
+    q = malloc(sizeof(struct s));
+    r = malloc(sizeof(struct s));
+    printf("Enter the data after which u want to delete:- ");
+    scanf("%d", &t);
+    p = h;
+    while (p != NULL)
+    {
+        if (p->i == t)
+        {
+            break;
+        }
+        r=p;
+        p = p->next;
+    }
+    if (p == NULL)
+    {
+        printf("ERROR: please give the corrct value no such data found.\n");
+    }
+    else if (p->next == NULL)
+    {
+        printf("there is no value after %d. Hence it is the last value.\n", p->i);
+    }
+    else
+    {
+        q=p->next;
+        p->next=q->next;
+         printf("%d has been deleted after %d. \n", q->i, p->i);
+        free(q);
+    }
+}
+
 // printing the nodes
 void printList()
 {
@@ -296,6 +333,9 @@ int main()
             break;
         case 8:
             deleteBefore();
+            break;
+        case 9:
+            delAfter();
             break;
         case 10:
             printList();
