@@ -9,6 +9,41 @@ struct d
 };
 struct d *h, *t, *p, *p1;
 
+// creating the ll of n size
+void createNode()
+{
+    h = NULL;
+    t = NULL;
+    int c = 0, n;
+    printf("Enter the no. of nodes you want to create :- ");
+    scanf("%d", &n);
+    while (c < n)
+    {
+        if (h == NULL)
+        {
+            p = malloc(sizeof(struct d));
+            printf("enter value %d :- ", c + 1);
+            scanf("%d", &p->i);
+            p->prev = NULL;
+            p->next = NULL;
+            h = p;
+            t=p;
+        }
+        else
+        {
+            p1 = malloc(sizeof(struct d));
+            printf("enter value %d :- ", c + 1);
+            scanf("%d", &p1->i);
+            p->next = p1;
+            p1->prev = p;
+            p1->next = NULL;
+            p = p1;
+            t=p;
+        }
+        c++;
+    }
+}
+
 // inserting the node at the end
 void insertEnd()
 {
@@ -28,10 +63,10 @@ void insertEnd()
         p1 = malloc(sizeof(struct d));
         printf("enter the node u want to insert in the end :- ");
         scanf("%d", &p1->i);
-        t->next = p1;
         p1->prev = t;
+        t->next = p1;
         p1->next = NULL;
-        p1 = t;
+        t=p1;
     }
 }
 
@@ -74,7 +109,7 @@ void insertAfter()
     printf("Enter the node u want to insert after %d :- ", n);
     scanf("%d", &p->i);
     p1 = h;
-    while (p != NULL)
+    while (p1 != NULL)
     {
         if (p1->i == n)
         {
@@ -82,7 +117,6 @@ void insertAfter()
         }
         p1 = p1->next;
     }
-    q = p1->next;
     if (p1 == NULL)
     {
         printf("ERROR: %d is not present in the list.\n", n);
@@ -99,9 +133,10 @@ void insertAfter()
         }
         else
         {
+            q = p1->next;
             p->prev = p1;
-            p->next = q;
             p1->next = p;
+            p->next = q;
             q->prev = p;
         }
     }
@@ -138,16 +173,17 @@ void insertBefore()
         if (p1 == h)
         {
             p->next = h;
-            h->prev = p1;
-            p1->prev = NULL;
+            h->prev = p;
+            p->prev = NULL;
             h = p;
             printf("Since %d is the first term hence %d becomes the first term.\n", n, p->i);
         }
-        else{
-            p->next=p1;
-            p->prev=q;
-            q->next=p;
-            p1->prev=p;
+        else
+        {
+            p->next = p1;
+            p->prev = q;
+            q->next = p;
+            p1->prev = p;
         }
     }
 }
@@ -174,12 +210,59 @@ void printNodes()
 
 void main()
 {
-    insertEnd();
-    printNodes();
-    insertStart();
-    printNodes();
-    insertAfter();
-    printNodes();
-    insertBefore();
-    printNodes();
+    int c;
+    do
+    {
+        printf("Select the operation u want to perform.\n");
+        printf("-------------------------------------------------------------------------------------------------------------\n");
+        printf("||    1.Create the node \t        2.Insert a node at begining\t   3.Insert the node at end.       ||\n");
+        printf("||    4.Insert after the value \t        5.Insert before the value\t   6.Delete the node from start.   ||\n");
+        printf("||    7.Delete from end \t        8.Delete before the value\t   9.Delete after the value.       ||\n");
+        printf("||   10.View the LinkedList                                                                                ||\n ");
+        printf("------------------------------------------------------------------------------------------------------------\n");
+
+        scanf("%d", &c);
+        switch (c)
+        {
+        case 1:
+            createNode();
+            break;
+
+        case 2:
+            insertStart();
+            break;
+
+        case 3:
+            insertEnd();
+            break;
+        case 4:
+            insertAfter();
+            break;
+
+        case 5:
+            insertBefore();
+            break;
+
+        case 10:
+            printNodes();
+            break;
+
+        case 0:
+            printf("The program is being terminated.");
+            break;
+
+        default:
+            printf("Invalid choice. Please enter a valid option.\n");
+            break;
+        }
+    } while (c != 0);
+
+    // insertEnd();
+    // printNodes();
+    // insertStart();
+    // printNodes();
+    // insertAfter();
+    // printNodes();
+    // insertBefore();
+    // printNodes();
 }
