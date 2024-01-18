@@ -27,7 +27,7 @@ void createNode()
             p->prev = NULL;
             p->next = NULL;
             h = p;
-            t=p;
+            t = p;
         }
         else
         {
@@ -38,7 +38,7 @@ void createNode()
             p1->prev = p;
             p1->next = NULL;
             p = p1;
-            t=p;
+            t = p;
         }
         c++;
     }
@@ -66,7 +66,7 @@ void insertEnd()
         p1->prev = t;
         t->next = p1;
         p1->next = NULL;
-        t=p1;
+        t = p1;
     }
 }
 
@@ -188,6 +188,66 @@ void insertBefore()
     }
 }
 
+// delete from start
+void deletestart()
+{
+    p = malloc(sizeof(struct d));
+    p1 = malloc(sizeof(struct d));
+    if (h == NULL && t == NULL)
+    {
+        printf("There is no node to delete. \n");
+    }
+    else
+    {
+        p = h;
+        if (p->next == NULL)
+        {
+            int a = p->i;
+            free(p);
+            printf("%d was the single node which is deleted.\n", a);
+            h = t = NULL;
+        }
+        else
+        {
+            int a = p->i;
+            h = h->next;
+            free(p);
+            printf("%d has been deleted from the starting.\n", a);
+            h->prev = NULL;
+        }
+    }
+}
+
+// dlelte from end
+void deleteEnd()
+{
+    p = malloc(sizeof(struct d));
+    p1 = malloc(sizeof(struct d));
+    if (h == NULL && t == NULL)
+    {
+        printf("There is no node to delete. \n");
+    }
+    else
+    {
+        p = t;
+        if (p->prev == NULL)
+        {
+            int a = p->i;
+            free(p);
+            printf("%d was the single node which is deleted.\n", a);
+            t = h = NULL;
+        }
+        else
+        {
+            int a = p->i;
+            t = t->prev;
+            free(p);
+            printf("%d has been deleted from the End.\n", a);
+            t->next = NULL;
+        }
+    }
+}
+
 // printing all the nodes
 void printNodes()
 {
@@ -242,7 +302,12 @@ void main()
         case 5:
             insertBefore();
             break;
-
+        case 6:
+            deletestart();
+            break;
+        case 7:
+            deleteEnd();
+            break;
         case 10:
             printNodes();
             break;
@@ -256,13 +321,4 @@ void main()
             break;
         }
     } while (c != 0);
-
-    // insertEnd();
-    // printNodes();
-    // insertStart();
-    // printNodes();
-    // insertAfter();
-    // printNodes();
-    // insertBefore();
-    // printNodes();
 }
