@@ -247,6 +247,48 @@ void deleteEnd()
         }
     }
 }
+// deleteinf before
+void deletebefore(){
+     p1 = malloc(sizeof(struct d));
+    if(h==NULL&&t==NULL){
+        printf("First create the node. \n");
+    }
+    else{
+        int n;
+        printf("enter the no befor which u want to delete :- ");
+        scanf("%d",&n);
+        if(h->i==n){
+                printf("Cannot delete before the only node in the list.\n");
+            }
+        else if (h->next != NULL && (h->next)->i == n) {
+            p1 = h->next;
+            free(h);
+            h = p1;
+            h->prev = NULL;
+            free(p1);
+        } 
+        
+        
+        else{
+            p1=h;
+            while(p1->next!=t){
+                if((p1->next)->i==n){
+                    break;
+                }
+                p1=p1->next;
+            }
+            if(p1==NULL){
+                printf("no node found.\n");
+            }
+            else{
+                  struct d *q = p1->next;
+                p1->next=q->next;
+                (q->next)->prev=p1;
+                free(q);
+            }
+        }
+    }
+}
 
 // printing all the nodes
 void printNodes()
@@ -307,6 +349,9 @@ void main()
             break;
         case 7:
             deleteEnd();
+            break;
+        case 8:
+            deletebefore();
             break;
         case 10:
             printNodes();
